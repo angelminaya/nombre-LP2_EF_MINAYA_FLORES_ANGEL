@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        /* Estilo general para el cuerpo */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        /* Estilo del encabezado, incluyendo logo y información de la empresa */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        /* Estilo para la imagen del logo */
+        header img {
+            height: 50px;
+        }
+        /* Información de la empresa alineada a la derecha */
+        header .company-info {
+            text-align: right;
+        }
+        /* Formato de la fecha */
+        .date {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        /* Estilo de la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        /* Bordes para la tabla y celdas */
+        table, th, td {
+            border: 1px solid #000;
+        }
+        /* Espaciado y alineación de celdas */
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        /* Estilo para subtotales */
+        .subtotal {
+            text-align: right;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        /* Estilo para la sección de firma */
+        .signature {
+            margin-top: 50px;
+            text-align: left;
+        }
+        /* Tamaño de la imagen de la firma */
+        .signature img {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <!-- Logo de la empresa -->
+    <img src="https://campusvirtualperu.com/wp-content/uploads/2023/11/logo_cibertec_fondo_blanco_low.jpg" alt="Company Logo">
+    <div class="company-info">
+        <h2>Cibertec</h2>
+    </div>
+</header>
+
+<!-- Fecha actual formateada -->
+<div class="date">
+    <p th:text="${#dates.format(new java.util.Date(), 'dd/MM/yyyy')}">24/10/2024</p>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre Producto</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Categoria</th>
+    </tr>
+    </thead>
+    <tbody>
+        <!-- Iteración sobre los productos en la factura -->
+		<tr th:each="ped : ${factura}">
+		     <td th:text="${ped.productoEntity.productoId}"></td>
+		     <td th:text="${ped.productoEntity.nombre}"></td>
+		     <td th:text="'S/' + ${ped.productoEntity.precio}"></td>
+		     <td th:text="${ped.productoEntity.stock}"></td>
+		     <td th:text="${ped.productoEntity.categoria}"></td>
+		     <td th:text="'S/' + ${ped.cantidad} * ${ped.productoEntity.precio}"></td>
+        </tr>
+    </tbody>
+</table>
+<div class="signature">
+    <!-- Imagen de la firma -->
+    <img src="https://th.bing.com/th/id/OIP.1KLwvxKyMR__roeYWZgobwHaE1?rs=1&pid=ImgDetMain" alt="Firma">
+</div>
+<span>CIBERTEC SAC.</span>
+</body>
+</html>

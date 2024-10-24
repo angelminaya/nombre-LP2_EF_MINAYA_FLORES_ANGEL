@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Producto</title>
+    <!-- Enlace a la hoja de estilos de Bootstrap para diseño responsivo -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Editar Producto</h1>
+    <!-- Formulario para actualizar un producto existente -->
+    <form th:action="@{/actualizar_producto}" method="post">
+        <!-- Campo oculto para enviar el ID del producto -->
+        <input type="hidden" th:name="productoId" th:value="${producto.productoId}" />
+        
+        <div class="form-group">
+               <label for="nombre">Nombre:</label>
+               <input type="text" class="form-control" id="nombre" name="nombre" th:value="${producto.nombre}" required>
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio:</label>
+            <input type="number" class="form-control" step="0.01" id="precio" name="precio" th:value="${producto.precio}" required>
+        </div>
+        <div class="form-group">
+            <label for="stock">Stock:</label>
+            <input type="number" class="form-control" id="stock" name="stock" th:value="${producto.stock}" required>
+        </div>
+        <div class="form-group">
+            <label for="categoria">Categoría:</label>
+            <input type="text" class="form-control" id="categoria" name="categoria" th:value="${producto.categoria}" required>
+        </div>
+        <!-- Botón para actualizar el producto -->
+        <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+        <!-- Enlace para cancelar la edición y volver al menú -->
+        <a href="/menu" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

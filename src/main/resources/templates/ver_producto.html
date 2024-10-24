@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ver Producto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Cambia el color de fondo del botón Volver */
+        .btn-volver {
+            background-color: #007bff; /* Azul brillante */
+            color: white; /* Color de letra blanco */
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <!-- Título del producto mostrado dinámicamente -->
+    <h1 th:text="${producto.nombre}">Nombre del Producto</h1>
+    <!-- Precio del producto mostrado dinámicamente -->
+    <p th:text="'Precio: S/' + ${producto.precio}">Precio</p>
+    <!-- Stock del producto mostrado dinámicamente -->
+    <p th:text="'Stock: ' + ${producto.stock}">Stock</p>
+    <!-- Categoría del producto mostrado dinámicamente -->
+    <p th:text="'Categoria: ' + ${producto.categoria}">Categoria</p>
+    <!-- Botón para volver al menú con estilo personalizado -->
+    <a href="/menu" class="btn btn-volver">Volver</a>
+</div>
+</body>
+</html>
